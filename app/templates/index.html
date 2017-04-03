@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<div class="page-header">
+  <h3>All Posts &nbsp;<span class="badge">{{ post_count }}</span></h3>
+</div>
+{% for post in posts.items %}
+<section class="post">
+    <header class="post-header">
+        <h4 class="post-title">
+            <a href="{{ url_for('main.detail', alias=post.alias) }}">{{ post.title }}</a>
+        </h4>
+    </header>
+
+    <div class="post-description">
+        <div>
+            {{ post.content }}
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+
+{% if posts.has_prev %}
+    <a class="pre-btn" href="{{ url_for('main.index', page = posts.prev_num) }}">
+        <i class="fa fa-angle-double-left" aria-hidden="true"></i> Newer Posts
+    </a>
+{% endif %}
+
+{% if posts.has_next %}
+    <a class="next-btn" href="{{ url_for('main.index', page = posts.next_num) }}">
+        Older Posts <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+    </a>
+{% endif %}
+
+{% endblock %}

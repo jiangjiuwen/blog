@@ -1,0 +1,159 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Jiuwen's Blog{% endblock %}
+
+
+
+
+{% block styles %}
+{{super()}}
+<!--[if lte IE 8]>
+        <link rel="stylesheet" href="css/layouts/blog-old-ie.css">
+    <![endif]-->
+<!--[if gt IE 8]><!-->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='blog.css') }}">
+<link rel="stylesheet" href="https://cdn.rawgit.com/balzss/luxbar/ae5835e2/build/luxbar.min.css">
+<!--<![endif]-->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+    crossorigin="anonymous"> 
+{% endblock %}
+
+
+
+
+{% block scripts %}
+{{super()}}
+<script type="text/javascript">
+window.onload=function(){
+    $.getJSON('/category', function(data) {
+        for (var i=0; i<data.categories.length; i++)
+        {
+            $("#cats").append("<li><a href='/category/"+ data.categories[i][2] + "'>"+ data.categories[i][1] +"</a></li>");
+        }
+    });
+    $.getJSON('/current', function(data) {
+        if (data.current == 1)
+        {
+            $('#dashboard').addClass('navbar-active');
+        }
+        else if (data.current == 2)
+        {
+            $('#posts').addClass('navbar-active');
+        }
+        else if (data.current == 3)
+        {
+            $('#archive').addClass('navbar-active');
+        }
+        else if (data.current == 4)
+        {
+            $('#about').addClass('navbar-active');
+        }
+        else
+        {
+            // $('#dashboard').addClass('navbar-active');
+        }
+    });
+}
+</script>
+
+{{ moment.include_moment() }} 
+{{ moment.lang("en-US") }} 
+{% endblock %}
+
+
+
+
+{%block navbar %}
+<nav class="navbar navbar-fixed-top navbar-head">
+    <div class="container blog-container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Jiuwen's Blog</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Jiuwen's Blog</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul id='menu' class="nav navbar-nav">
+                {% if current_user.is_authenticated %}
+                <li>
+                    <a id='dashboard' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Dashboard <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('dashboard.index') }}">Posts</a></li>
+                        <li><a href="{{ url_for('dashboard.categories') }}">Categories</a></li>
+                        <li><a href="{{ url_for('dashboard.tags') }}">Tags</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+                <li>
+                    <a id='posts' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-tasks" aria-hidden="true"></i> Posts <span class="caret"></span>
+                    </a>
+                    <ul id='cats', class="dropdown-menu">
+                        <li><a href="{{ url_for('main.index') }}">All Posts</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a id='archive' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-tags fa-fw" aria-hidden="true"></i> Archive <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('main.tag') }}">Tags</a></li>
+                        <li><a href="{{ url_for('main.tag') }}">Timeline</a></li>
+                    </ul>
+                </li>
+                <li><a id='about' href="{{ url_for('main.about') }}"><i class="fa fa-user fa-fw" aria-hidden="true"></i> About</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Search">
+                    <a class="search-btn" href="#"><i class="fa fa-search fa-fw" aria-hidden="true"></i></a>
+                </div>
+            </form>
+              
+              <!-- <div id="navbar-trending-search"></div> -->
+
+        </div><!-- /.nav-collapse -->
+    </div><!-- /.container -->
+</nav><!-- /.navbar -->
+<!--<div class="container">
+
+
+<header id="luxbar" class="luxbar-fixed">
+    <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox"/>
+    <div class="luxbar-menu luxbar-menu-right luxbar-menu-material-bluegrey">
+        <ul class="luxbar-navigation">
+            <li class="luxbar-header">
+                <a href="#" class="luxbar-brand">LUXBAR</a>
+                <label class="luxbar-hamburger luxbar-hamburger-doublespin" 
+                id="luxbar-hamburger" for="luxbar-checkbox"> <span></span> </label>
+            </li>
+            <li class="luxbar-item"><a href="#">Item 1</a></li>
+
+            <li class="luxbar-item"><a href="#">Item 2</a></li>
+
+            <li class="luxbar-item"><a href="#">Item 3</a></li>
+
+            <li class="luxbar-item"><a href="#">Item 4</a></li>
+        </ul>
+    </div>
+</header>
+</div>-->
+{% endblock %} 
+
+
+
+
+{% block content %}
+<div class="container blog-container">
+    {% block page_content %}{% endblock %}
+</div>
+<div class="container blog-container footer">
+    © 2017 <a href="{{ url_for('main.index') }}">Jiang Jiuwen</a>
+</div>
+{% endblock %}

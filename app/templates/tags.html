@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Jiuwen's Blog - Tags{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+  <h3>All Tags&nbsp;<span class="badge">{{ tags | length }}</span></h3>
+</div>
+<ul class="tag-list">
+{% for tag in tags %}
+    <li>
+        <a href="{{ url_for('main.tag', tag_alias=tag.alias) }}">
+            {{ tag.name }} <span class="badge">{{ tag.related_posts.count() }}</span>
+        </a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

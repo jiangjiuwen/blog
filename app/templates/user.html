@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+
+
+{% block title %}
+
+Jiuwen's Blog - 
+{% if current_user.is_authenticated %}
+    {{ user.username }}
+{% else %}
+    No User
+{% endif %}
+
+{% endblock %}
+
+
+
+
+{% block page_content %}
+{% import '_posts.html' as macro %}
+{{ macro.render_posts(user.related_posts[::-1]) }}
+{% endblock %}

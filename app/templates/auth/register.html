@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Jiuwen's Blog - Register{% endblock %}
+
+{% block page_content %}
+<div class="page-header auth-panel">
+    <div class="panel panel-primary comments-panel">
+        <div class="panel-heading comments-head"><i class="fa fa-address-card-o" aria-hidden="true"></i> Register</div>
+        <div class="panel-body">
+            <form action="{{ url_for('auth.register') }}" method=post>
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    <!--<label for="email">{{ form.email.label }}</label>-->
+                    {{ form.email(id='email', class='form-control', type='Email', placeholder='Email') }}
+                    {% for error in form.errors.email %}
+                        <span style="color: red;">{{error}}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <!--<label for="username">{{ form.username.label }}</label>-->
+                    {{ form.username(id='username', class='form-control', type='Text', placeholder='Username') }}
+                </div>
+                <div class="form-group">
+                    <!--<label for="password">{{ form.password.label }}</label>-->
+                    {{ form.password(id='password', class='form-control', type='Password', placeholder='Password') }}
+                </div>
+                <div class="form-group">
+                    <!--<label for="password2">{{ form.password2.label }}</label>-->
+                    {{ form.password2(id='password2', class='form-control', type='Password', placeholder='Password') }}
+                </div>
+                {{ form.submit(type="submit", class="btn btn-primary") }}
+                or <a href="{{ url_for('auth.login') }}">Login</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

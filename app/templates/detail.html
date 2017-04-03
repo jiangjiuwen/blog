@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Jiuwen's Blog - {{ post.title }}{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h3>{{ post.title }}</h3>
+</div>
+<header class="post-header">
+    <p class="post-meta">
+        <i class="fa fa-calendar" aria-hidden="true"></i> {{ moment(post.timestamp).format('YYYY-MM-DD hh:mm:ss') }} 
+        &nbsp;
+        <a class="post-category" href="{{ url_for('main.category', category_alias=post.related_category.alias) }}">
+            <i class="fa fa-folder-open" aria-hidden="true"></i> {{ post.related_category.name }}
+        </a>
+        &nbsp;
+        {% for tag in post.related_tags %}
+        <a class="post-category" href="{{ url_for('main.tag', tag_alias=tag.alias) }}">
+            <i class="fa fa-tag" aria-hidden="true"></i> {{ tag.name }}
+        </a>
+        {% endfor %}
+    </p>
+</header>
+<div class="post-description">
+    {% if post.content_html %}
+        {{ post.content_html | safe }}
+    {% else %}
+        {{ post.content }}
+    {% endif %}
+</div>
+<div class="panel panel-primary comments-panel">
+    <div class="panel-heading comments-head">Comments</div>
+    <div class="panel-body">
+        Panel content
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Jiuwen's Blog - Auth{% endblock %}
+
+
+{% block page_content %}
+<div class="page-header">
+    <h3>Auth</h3>
+</div>
+{% if current_user.is_authenticated %}
+    Hello {{ current_user.username }}, you can click <a href="{{ url_for('auth.logout') }}">me</a> to logout.
+{% else %}
+    Hello stranger, you can click <a href="{{ url_for('auth.login') }}">me</a> to login.
+{% endif %}
+{% endblock %}

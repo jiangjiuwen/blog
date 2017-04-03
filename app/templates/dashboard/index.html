@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Jiuwen's Blog - Dashboard{% endblock %}
+
+
+{% block page_content %}
+<div class="page-header">
+  <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Write ......</h3>
+</div>
+{% if current_user.is_authenticated %}
+    <form action="{{ url_for('dashboard.index') }}" method=post>
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <!--<label for="alias">{{ form.alias.label }}</label>-->
+            {{ form.alias(id='alias', class='form-control', type='text', placeholder='Alias') }}
+        </div>
+        <div class="form-group">
+            <!--<label for="title">{{ form.title.label }}</label>-->
+            {{ form.title(id='title', class='form-control', type='text', placeholder='Title') }}
+        </div>
+        <div class="form-group">
+            {{ form.content(class='form-control', type='textarea', rows='13', placeholder="What's on your mind?") }}
+            {{ pagedown.include_pagedown() }}
+        </div>
+        <div class="form-group">
+            <!--<label for="tags">{{ form.tags.label }}</label>-->
+            {{ form.tags(id='tags', class='form-control', type='text', placeholder='Tags') }}
+        </div>
+        <div class="form-group">
+            {{ form.category(id='category', class='form-control', placeholder='Category') }}
+        </div>
+        <div class="form-group">
+            {{ form.post_type(class='radio-inline', type='radio') }}
+        </div>
+        {{ form.submit(type="submit", class="btn btn-primary btn-lg btn-block") }}
+    </form>
+{% endif %}
+
+{% endblock %}

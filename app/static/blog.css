@@ -1,0 +1,174 @@
+/* 超小屏幕（手机，小于 768px） */
+/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+
+@media (max-width: 768px) {
+    .hiden-xs {
+        display: none;
+    }
+}
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+    .blog-container {
+        max-width: 768px;
+    }
+ }
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: 992px) { 
+    .blog-container {
+        width: 768px;
+    }
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media (min-width:1200px) { 
+    .blog-container {
+        width: 768px;
+    }
+}
+
+
+body {
+    padding-top: 35px;
+}
+a:link {
+    text-decoration: none;
+}
+.footer {
+    margin: 30px auto;
+    text-align: center;
+}
+
+.auth-panel {
+    text-align: center;
+}
+
+/********************** navbar ********************************/
+.navbar-header a {
+    font-size: 14px;
+    font-weight: bold;
+}
+.navbar-head {
+    box-sizing: border-box;
+    background-color: #fafafb;
+    box-shadow: 0 1px 0 rgba(12,13,14,0.15);
+    transition: box-shadow cubic-bezier(.165, .84, .44, 1) .25s;
+    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 13px;
+    line-height: 1.3em;
+    color: #242729;
+    height: 50px;
+}
+.navbar-head a {
+    color: #242729;
+}
+.navbar-active {
+    height: 50px;
+    border-bottom: 3px solid #337ab7;
+}
+.navbar-head .navbar-active {
+    color: #337ab7;
+}
+/********************** search ********************************/
+.search-bar {
+    border-bottom: 1px solid #969696;
+}
+.search-input {
+    padding: 0 10px 0 10px;
+    width: 130px;
+    height: 30px;
+    font-size: 14px;
+    border: none;
+    color: #969696;
+    background: transparent;
+}
+.search-btn {
+    width: 30px;
+    height: 30px;
+    line-height: normal;
+    color: #969696;
+    text-align: center;
+}
+
+/********************** posts ********************************/
+.post-title {
+    color: black;
+}
+.post-title a {
+    color: #337ab7;
+    font-size: 90%；
+}
+.post-meta {
+    font-size: 85%;
+}
+/*.post-meta a {
+    color: #eee;
+}
+.post-meta a:hover {
+    color: #fff;
+}*/
+.post-description {
+    border-bottom: 1px solid #eee;
+    line-height: 24px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.post-description img {
+    max-width:100%;
+    height:auto;
+}
+
+.pre-btn {
+    float: left;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-top: 10px;
+    background: #337ab7;
+    color: #eee;
+}
+.pre-btn:hover {
+    color: #fff;
+}
+.next-btn {
+    float: right;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-top: 10px;
+    background: #337ab7;
+    color: #eee;
+}
+.next-btn:hover {
+    color: #fff;
+}
+/********************** tags ********************************/
+.tag-list {
+    list-style: none;
+	padding: 0 0 8px;
+	/*border-bottom: 1px solid #eee;*/
+}
+.tag-list a {
+	float: left;
+	margin: 0 15px 10px 0;
+	list-style: none;
+    border: 1px solid #337ab7;
+    border-radius: 0px;
+    padding: 15px;
+    background: #f6f7f9;
+    font-size: 20px;
+    text-decoration-line: unset;
+}
+.table-col-title {
+    width: 75%;
+}
+
+/********************** comments ********************************/
+.comments-panel {
+    margin-top: 10px;
+    border-radius: 0;
+}
+
+.comments-head {
+    border-radius: 0;
+}
