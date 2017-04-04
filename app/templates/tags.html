@@ -6,12 +6,21 @@
 <div class="page-header">
   <h3>All Tags&nbsp;<span class="badge">{{ tags | length }}</span></h3>
 </div>
-<ul class="tag-list">
+<ul class="common-list">
 {% for tag in tags %}
     <li>
-        <a href="{{ url_for('main.tag', tag_alias=tag.alias) }}">
-            {{ tag.name }} <span class="badge">{{ tag.related_posts.count() }}</span>
-        </a>
+        <div class="tag-item-group">
+            <div class="tag-item-btn">
+                <a href="{{ url_for('main.tag', tag_alias=tag.alias) }}">
+                    {{ tag.name }}
+                </a>
+            </div>
+            <div class="tag-item-count">
+                <a href="{{ url_for('main.tag', tag_alias=tag.alias) }}">
+                    {{ tag.related_posts.count() }}
+                </a>
+            </div>
+        </div>
     </li>
 {% endfor %}
 </ul>

@@ -24,15 +24,31 @@
 {% endfor %}
 
 
-{% if posts.has_prev %}
-    <a class="pre-btn" href="{{ url_for('main.index', page = posts.prev_num) }}">
-        <i class="fa fa-angle-double-left" aria-hidden="true"></i> Newer Posts
-    </a>
-{% endif %}
+<div class="paginate">
+    <div class="paginate-group-left {% if not posts.has_prev %}paginate-group-disabled{% endif %}">
+        <div class="paginate-icon-left">
+            <a {% if posts.has_prev %}href="{{ url_for('main.index', page = posts.prev_num) }}"{% endif %}>
+                <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="paginate-btn-left">
+            <a {% if posts.has_prev %}href="{{ url_for('main.index', page = posts.prev_num) }}"{% endif %}>
+                Newer
+            </a>
+        </div>
+    </div>
 
-{% if posts.has_next %}
-    <a class="next-btn" href="{{ url_for('main.index', page = posts.next_num) }}">
-        Older Posts <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-    </a>
-{% endif %}
+    <div class="paginate-group-right {% if not posts.has_next %}paginate-group-disabled{% endif %}">
+        <div class="paginate-btn-right">
+            <a {% if posts.has_next %}href="{{ url_for('main.index', page = posts.next_num) }}"{% endif %}>
+                Older
+            </a>
+        </div>
+        <div class="paginate-icon-right">
+            <a {% if posts.has_next %}href="{{ url_for('main.index', page = posts.next_num) }}"{% endif %}>
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}

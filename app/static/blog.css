@@ -27,7 +27,7 @@
     }
 }
 
-
+/********************** common ********************************/
 body {
     padding-top: 35px;
 }
@@ -38,7 +38,14 @@ a:link {
     margin: 30px auto;
     text-align: center;
 }
-
+.footer a {
+    color: #ea6f5a;
+}
+.common-list {
+    list-style: none;
+	padding: 0 0 8px;
+	/*border-bottom: 1px solid #eee;*/
+}
 .auth-panel {
     text-align: center;
 }
@@ -64,10 +71,19 @@ a:link {
 }
 .navbar-active {
     height: 50px;
-    border-bottom: 3px solid #337ab7;
+    border-bottom: 3px solid #ea6f5a;
 }
 .navbar-head .navbar-active {
-    color: #337ab7;
+    color: #ea6f5a;
+}
+.nav .open a {
+    border-color: #ea6f5a;
+}
+.nav .open a:hover {
+    border-color: #ea6f5a;
+}
+.nav .open a:focus {
+    border-color: #ea6f5a;
 }
 /********************** search ********************************/
 .search-bar {
@@ -95,18 +111,23 @@ a:link {
     color: black;
 }
 .post-title a {
-    color: #337ab7;
-    font-size: 90%；
+    color: inherit;
+    font-size: 90%;
+    font-weight: bold;
+}
+.post-title a:hover {
+    text-decoration: underline;
 }
 .post-meta {
     font-size: 85%;
+    color: #969696;
 }
-/*.post-meta a {
-    color: #eee;
+.post-meta a {
+    color: #969696;
 }
 .post-meta a:hover {
-    color: #fff;
-}*/
+    color: black;
+}
 .post-description {
     border-bottom: 1px solid #eee;
     line-height: 24px;
@@ -116,49 +137,100 @@ a:link {
 .post-description img {
     max-width:100%;
     height:auto;
+    margin: 0 auto;
 }
 
-.pre-btn {
+/********************** paginate ********************************/
+.paginate {
+    /*display: inline-block;*/
+}
+
+.paginate-group-left {
+    border: 1px solid #ea6f5a;
+    border-radius: 40px;
+    font-size: 0;
+    padding: 13px 0 15px;
     float: left;
-    border: 1px solid #eee;
-    border-radius: 20px;
-    padding: 5px 10px;
-    margin-top: 10px;
-    background: #337ab7;
-    color: #eee;
 }
-.pre-btn:hover {
-    color: #fff;
-}
-.next-btn {
+.paginate-group-right {
+    border: 1px solid #ea6f5a;
+    border-radius: 40px;
+    font-size: 0;
+    padding: 13px 0 15px;
     float: right;
-    border: 1px solid #eee;
-    border-radius: 20px;
-    padding: 5px 10px;
-    margin-top: 10px;
-    background: #337ab7;
-    color: #eee;
 }
-.next-btn:hover {
-    color: #fff;
+.paginate-group-disabled {
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.65;
 }
+.paginate-btn-left {
+    display: inline-block;
+    font-size: 14px;
+}
+.paginate-btn-left a {
+    color: #ea6f5a;
+    padding: 18px 30px 18px 15px;
+    text-decoration: none;
+}
+.paginate-btn-right {
+    display: inline-block;
+    font-size: 14px;
+}
+.paginate-btn-right a {
+    color: #ea6f5a;
+    padding: 18px 15px 18px 30px;
+    text-decoration: none;
+}
+.paginate-icon-left {
+    border-right: 1px solid rgba(236, 97, 73, 0.4);
+    display: inline-block;
+    font-size: 14px;
+}
+.paginate-icon-right {
+    border-left: 1px solid rgba(236, 97, 73, 0.4);
+    display: inline-block;
+    font-size: 14px;
+}
+.paginate-icon-left a {
+    color: #ea6f5a;
+    padding: 18px 17px 18px 30px;
+}
+.paginate-icon-right a {
+    color: #ea6f5a;
+    padding: 18px 30px 18px 17px;
+}
+
 /********************** tags ********************************/
-.tag-list {
-    list-style: none;
-	padding: 0 0 8px;
-	/*border-bottom: 1px solid #eee;*/
+.tag-item-group {
+    border: 1px solid #ea6f5a;
+    border-radius: 40px;
+    font-size: 0;
+    padding: 13px 0 15px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
-.tag-list a {
-	float: left;
-	margin: 0 15px 10px 0;
-	list-style: none;
-    border: 1px solid #337ab7;
-    border-radius: 0px;
-    padding: 15px;
-    background: #f6f7f9;
-    font-size: 20px;
-    text-decoration-line: unset;
+.tag-item-btn {
+    display: inline-block;
+    font-size: 14px;
 }
+.tag-item-btn a {
+    color: #ea6f5a;
+    padding: 18px 15px 18px 30px;
+    text-decoration: none;
+}
+.tag-item-count {
+    border-left: 1px solid rgba(236, 97, 73, 0.4);
+    display: inline-block;
+    font-size: 14px;
+}
+.tag-item-count a {
+    color: #ea6f5a;
+    padding: 18px 30px 18px 17px;
+}
+
+/********************** table ********************************/
 .table-col-title {
     width: 75%;
 }

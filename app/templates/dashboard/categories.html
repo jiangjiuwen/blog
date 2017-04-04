@@ -27,12 +27,21 @@
 </div>
 {% endif %}
 
-<ul class="tag-list">
+<ul class="common-list">
 {% for category in categories %}
     <li>
-        <a href="{{ url_for('main.category', category_alias=category.alias) }}">
-            {{ category.name }} <span class="badge">{{ category.related_posts.count() }}</span>
-        </a>
+        <div class="tag-item-group">
+            <div class="tag-item-btn">
+                <a href="{{ url_for('main.category', category_alias=category.alias) }}">
+                    {{ category.name }}
+                </a>
+            </div>
+            <div class="tag-item-count">
+                <a href="{{ url_for('main.category', category_alias=category.alias) }}">
+                    {{ category.related_posts.count() }}
+                </a>
+            </div>
+        </div>
     </li>
 {% endfor %}
 </ul>
