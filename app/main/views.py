@@ -1,6 +1,7 @@
 from flask import render_template, redirect, url_for, abort
 from . import main
-from ..models import User, Post, Tag, Category
+from .forms import CommentForm
+from ..models import User, Post, Tag, Category, Comment
 from config import Config, NavigationItemEnum
 from .. import db
 from flask import jsonify
@@ -38,11 +39,20 @@ def tag(tag_alias=None):
         tag = Tag.query.filter_by(alias=tag_alias).first()
         return render_template('tag.html', tag=tag)
 
-@main.route('/post/<alias>')
+@main.route('/post/<alias>', methods=['GET', 'POST'])
 def detail(alias):
     Config.CURRENT_NAVIGATION_ITEM = NavigationItemEnum.POSTS
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = Comment(email=form.email.data,
+                          name=form.name.data,
+                          content=form.content.data,
+                          post_id=form.post_id.data)
+        db.session.add(comment)
+        db.session.commit()
+        form.clear()
     post = Post.query.filter_by(alias=alias).first()
-    return render_template('detail.html', post=post)
+    return render_template('detail.html', post=post, form=form)
 
 @main.route('/category', methods=['GET', 'POST'])
 @main.route('/category/<category_alias>')

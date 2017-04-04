@@ -239,8 +239,23 @@ a:link {
 .comments-panel {
     margin-top: 10px;
     border-radius: 0;
+    border-color: #ea6f5a;    
 }
 
 .comments-head {
     border-radius: 0;
+    background-color: #ea6f5a;
+    color: white;
+}
+.common-name {
+    font-size: 14px;
+}
+.comment-time {
+    float: right;
+    font-size: 14px;
+    vertical-align: bottom;
+}
+.comment-btn {
+    color: white;
+    background-color: #ea6f5a;
 }

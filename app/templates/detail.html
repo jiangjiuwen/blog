@@ -28,10 +28,45 @@
         {{ post.content }}
     {% endif %}
 </div>
-<div class="panel panel-primary comments-panel">
+<div class="panel comments-panel">
     <div class="panel-heading comments-head">Comments</div>
     <div class="panel-body">
-        Panel content
+        <form action="{{ url_for('main.detail', alias=post.alias) }}" method=post>
+            {{ form.hidden_tag() }}
+            <div class="form-group form-inline">
+                {{ form.name(id='name', class='form-control', type='text', placeholder='Your Name') }}
+                {{ form.email(id='email', class='form-control', type='email', placeholder='Your Email') }}
+            </div>
+            <div class="form-group">
+                {{ form.content(class='form-control', type='textarea', rows='5', placeholder="What's on your mind?") }}
+                {{ pagedown.include_pagedown() }}
+            </div>
+            <div class="form-group" style='display: none;'>
+                {{ form.post_id(id='post_id', class='form-control', value=post.id, type='text', placeholder='Post ID') }}
+            </div>
+            {{ form.submit(type="submit", class="btn btn-lg btn-block comment-btn") }}
+        </form>
     </div>
 </div>
+
+{% for comment in post.related_comments %}
+<section class="post">
+    <header class="post-header">
+        <h4 class="post-title">
+            <span class="comment-name">{{ comment.name }}</span>
+            <span class="comment-time">{{ moment(comment.timestamp).format('YYYY-MM-DD hh:mm:ss') }}</span>
+        </h4>
+    </header>
+
+    <div class="post-description">
+        <div>
+            {% if comment.content_html %}
+                {{ comment.content_html | safe }}
+            {% else %}
+                {{ comment.content }}
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endfor %}
 {% endblock %}

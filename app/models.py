@@ -56,8 +56,9 @@ class Post(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
-    related_tags = db.relationship('Tag', secondary = post_tags,
-                   backref = db.backref('related_posts', lazy = 'dynamic'))
+    related_tags = db.relationship('Tag', secondary=post_tags,
+                   backref=db.backref('related_posts', lazy='dynamic'))
+    related_comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
     def on_change_content(target, value, oldvalue, initiator):
         allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
@@ -71,3 +72,27 @@ class Post(db.Model):
             tags=allowed_tags, attributes=attrs, strip=True))
 
 db.event.listen(Post.content, 'set', Post.on_change_content)
+
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))
+    email = db.Column(db.String(128))
+    content = db.Column(db.Text)
+    content_html = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+
+    def on_change_content(target, value, oldvalue, initiator):
+        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
+                        'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
+                        'h1', 'h2', 'h3', 'p', 'img']
+        attrs = { '*': ['class'],
+                  'a': ['href', 'rel'],
+                  'img': ['src', 'alt'] }
+        target.content_html = bleach.linkify(bleach.clean(
+            markdown(value, output_format='html'),
+            tags=allowed_tags, attributes=attrs, strip=True))
+
+db.event.listen(Comment.content, 'set', Comment.on_change_content)
