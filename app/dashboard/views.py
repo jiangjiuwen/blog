@@ -20,7 +20,6 @@ def index():
                      content=form.content.data,
                      author_id=current_user.id)
         entry.category_id = form.category.data
-        entry.post_type = form.post_type.data
         tags = re.split(';|；|,|，', form.tags.data)
         for tag in tags:
             tag = tag.strip()

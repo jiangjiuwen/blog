@@ -10,7 +10,6 @@ class PostForm(FlaskForm):
     content = PageDownField("What's on your mind?", validators=[Required()])
     tags = TextField('Tags')
     category = SelectField('Category', coerce=int, choices=[('0', 'default')])
-    post_type = RadioField('Post Type', coerce=int, choices=[(0,'Text'),(1,'Image')])
     submit = SubmitField("Publish")
 
 class CategoryForm(FlaskForm):

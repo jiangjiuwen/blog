@@ -1,6 +1,5 @@
 from datetime import datetime
-from . import db
-from . import login_manager
+from . import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from markdown import markdown
@@ -52,7 +51,6 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     alias = db.Column(db.String(128), unique=True)
     title = db.Column(db.String(64))
-    post_type = db.Column(db.Integer, default=0)
     content = db.Column(db.Text)
     content_html = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
