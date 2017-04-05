@@ -1,8 +1,31 @@
 {% extends "base.html" %}
 
 {% block page_content %}
-<div class="page-header">
-  <h3>About Me</h3>
+
+<section class="aboutme-head">
+    <div class="aboutme-title">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates dolore nihil laudantium iusto illum harum tempora assumenda veritatis optio vel at adipisci consectetur magnam, ea ratione, maxime vero et commodi!
+    </div>
+  </section>
+<div>
+
+<!-- Nav tabs -->
+<div class="btn-group btn-group-justified" role="group" aria-label="...">
+    <div class="btn-group" role="group">
+        <button type="button" class="btn btn-success" href="#home" role="tab" data-toggle="tab">Left</button>
+    </div>
+    <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" href="#profile" role="tab" data-toggle="tab">Middle</button>
+    </div>
 </div>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci corrupti delectus nostrum doloribus numquam quasi odit, aspernatur dolore. Repellat reiciendis atque adipisci optio, quidem pariatur officiis laboriosam ratione accusantium impedit.
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="home">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+    <div role="tabpanel" class="tab-pane fade" id="profile">Adipisci corrupti delectus nostrum doloribus numquam quasi odit, aspernatur dolore.</div>
+</div>
+
+</div>
+
+
 {% endblock %}

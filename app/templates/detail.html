@@ -28,7 +28,7 @@
         {{ post.content }}
     {% endif %}
 </div>
-<div class="panel comments-panel">
+<div class="panel panel-primary comments-panel">
     <div class="panel-heading comments-head">Comments</div>
     <div class="panel-body">
         <form action="{{ url_for('main.detail', alias=post.alias) }}" method=post>
@@ -44,7 +44,7 @@
             <div class="form-group" style='display: none;'>
                 {{ form.post_id(id='post_id', class='form-control', value=post.id, type='text', placeholder='Post ID') }}
             </div>
-            {{ form.submit(type="submit", class="btn btn-lg btn-block comment-btn") }}
+            {{ form.submit(type="submit", class="btn btn-primary btn-lg btn-block") }}
         </form>
     </div>
 </div>

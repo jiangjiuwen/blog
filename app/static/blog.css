@@ -39,7 +39,7 @@ a:link {
     text-align: center;
 }
 .footer a {
-    color: #ea6f5a;
+    color: #337ab7;
 }
 .common-list {
     list-style: none;
@@ -54,6 +54,7 @@ a:link {
 .navbar-header a {
     font-size: 14px;
     font-weight: bold;
+    color: #242729;
 }
 .navbar-head {
     box-sizing: border-box;
@@ -71,19 +72,19 @@ a:link {
 }
 .navbar-active {
     height: 50px;
-    border-bottom: 3px solid #ea6f5a;
+    border-bottom: 3px solid #337ab7;
 }
 .navbar-head .navbar-active {
-    color: #ea6f5a;
+    color: #337ab7;
 }
 .nav .open a {
-    border-color: #ea6f5a;
+    border-color: #337ab7;
 }
 .nav .open a:hover {
-    border-color: #ea6f5a;
+    border-color: #337ab7;
 }
 .nav .open a:focus {
-    border-color: #ea6f5a;
+    border-color: #337ab7;
 }
 /********************** search ********************************/
 .search-bar {
@@ -137,7 +138,9 @@ a:link {
 .post-description img {
     max-width:100%;
     height:auto;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 /********************** paginate ********************************/
@@ -146,14 +149,14 @@ a:link {
 }
 
 .paginate-group-left {
-    border: 1px solid #ea6f5a;
+    border: 1px solid #337ab7;
     border-radius: 40px;
     font-size: 0;
     padding: 13px 0 15px;
     float: left;
 }
 .paginate-group-right {
-    border: 1px solid #ea6f5a;
+    border: 1px solid #337ab7;
     border-radius: 40px;
     font-size: 0;
     padding: 13px 0 15px;
@@ -169,7 +172,7 @@ a:link {
     font-size: 14px;
 }
 .paginate-btn-left a {
-    color: #ea6f5a;
+    color: #337ab7;
     padding: 18px 30px 18px 15px;
     text-decoration: none;
 }
@@ -178,32 +181,32 @@ a:link {
     font-size: 14px;
 }
 .paginate-btn-right a {
-    color: #ea6f5a;
+    color: #337ab7;
     padding: 18px 15px 18px 30px;
     text-decoration: none;
 }
 .paginate-icon-left {
-    border-right: 1px solid rgba(236, 97, 73, 0.4);
+    border-right: 1px solid #337ab7;
     display: inline-block;
     font-size: 14px;
 }
 .paginate-icon-right {
-    border-left: 1px solid rgba(236, 97, 73, 0.4);
+    border-left: 1px solid #337ab7;
     display: inline-block;
     font-size: 14px;
 }
 .paginate-icon-left a {
-    color: #ea6f5a;
+    color: #337ab7;
     padding: 18px 17px 18px 30px;
 }
 .paginate-icon-right a {
-    color: #ea6f5a;
+    color: #337ab7;
     padding: 18px 30px 18px 17px;
 }
 
 /********************** tags ********************************/
 .tag-item-group {
-    border: 1px solid #ea6f5a;
+    border: 1px solid #337ab7;
     border-radius: 40px;
     font-size: 0;
     padding: 13px 0 15px;
@@ -216,17 +219,17 @@ a:link {
     font-size: 14px;
 }
 .tag-item-btn a {
-    color: #ea6f5a;
+    color: #337ab7;
     padding: 18px 15px 18px 30px;
     text-decoration: none;
 }
 .tag-item-count {
-    border-left: 1px solid rgba(236, 97, 73, 0.4);
+    border-left: 1px solid #337ab7;
     display: inline-block;
     font-size: 14px;
 }
 .tag-item-count a {
-    color: #ea6f5a;
+    color: #337ab7;
     padding: 18px 30px 18px 17px;
 }
 
@@ -238,14 +241,11 @@ a:link {
 /********************** comments ********************************/
 .comments-panel {
     margin-top: 10px;
-    border-radius: 0;
-    border-color: #ea6f5a;    
+    border-radius: 0;    
 }
 
 .comments-head {
     border-radius: 0;
-    background-color: #ea6f5a;
-    color: white;
 }
 .common-name {
     font-size: 14px;
@@ -255,7 +255,16 @@ a:link {
     font-size: 14px;
     vertical-align: bottom;
 }
-.comment-btn {
-    color: white;
-    background-color: #ea6f5a;
+
+/********************** about me ********************************/
+.aboutme-head {
+    /*background: #fafafb url("avatar.jpg") repeat scroll 0 0;*/
+    background: #fafafb;
+    border-bottom: 1px solid #cecece;
+    width: 100%;
+    margin-top: 15px;
+    padding-top: 15px;
+}
+.aboutme-title {
+    margin: 30px;
 }
